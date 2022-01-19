@@ -70,7 +70,7 @@ resources: {}
     memory: 128Ki
 
 autoscaling:
-  enabled: flase
+  enabled: false
   minReplicas: 1
   maxReplicas: 10
   targetCPUUtilizationPercentage: 80
