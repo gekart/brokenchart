@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "brokenchart.fullname" . }}-test-connection"
+  labels:
+    {{- include "brokenchart.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "brokenchart.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never
